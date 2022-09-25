@@ -458,7 +458,7 @@ footer {
 }
 
 #terminalWrapper {
-  animation: textShadow 1.6s infinite;
+  animation: createBox .8s, textShadow 1.6s infinite;
   font-size: 20px;
   background-color: #fff;
   color: #000;
@@ -478,5 +478,17 @@ footer {
   animation: blink 1s steps(2,jump-none) infinite;
   font-size: 34px;
   margin-left: -3px;
+}
+
+@keyframes createBox {
+  0% {
+    transform: scale(0,0.01);
+  }
+  50% { 
+    transform: scale(1,0.01);
+  }
+  to {
+    transform: scale(1, 1);
+  }
 }
 
