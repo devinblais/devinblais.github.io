@@ -3,6 +3,7 @@ let c;
 let ctx;
 let cursorShown = true;
 const charWidth = 18;
+const renderStyle = 'html'; // canvas or text
 
 const onKeyDown = (e) => {
   const keyCode = e.keyCode;
@@ -20,7 +21,11 @@ const onKeyDown = (e) => {
   }
 }
 
-const render = () => {
+const renderHTML = () => {
+  c.innerHTML = '> ' + terminalText + '<span class="cursor">▮</span>';
+}
+
+const renderCanvas = () => {
   ctx.clearRect(0, 0, c.width, c.height);
   ctx.font = "30px monospace";
   ctx.fillText(terminalText, 10, 50);
@@ -34,13 +39,26 @@ const render = () => {
   }
 }
 
+const render = () => {
+  if(renderStyle === 'canvas') {
+    renderCanvas();
+  }else {
+    renderHTML();
+  }
+}
+
 
 const init = () => { 
-  c = document.getElementById("terminal");
-  ctx = c.getContext("2d");
+  // TODO: Need to hide/show appropriate termainl (currently rendering both)
+  if(renderStyle === 'canvas') {
+    c = document.getElementById("terminal");
+    ctx = c.getContext("2d");
+    setInterval(() => { cursorShown = !cursorShown; render(); }, 500);
+  } else {
+    c = document.getElementById("terminalText");
+  }
   document.onkeydown = onKeyDown;
   render();
-  setInterval(() => { cursorShown = !cursorShown; render(); }, 500);
 }
 
 document.addEventListener("DOMContentLoaded", init);
