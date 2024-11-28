@@ -156,11 +156,6 @@ section h3 {
   position: absolute;
 }
 
-@media print {
-  .icon {
-    display: none;
-  }
-}
 .icon svg {
   border-radius: 4px;
   fill: #FFFFFF;

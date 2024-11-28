@@ -179,10 +179,6 @@ section {
 }
 
 .icon {
-  @include print {
-    display: none;
-  }
-
   svg {
     border-radius: 4px;
     fill : #FFFFFF;
