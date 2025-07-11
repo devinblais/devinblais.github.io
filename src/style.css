@@ -16,6 +16,9 @@ body {
 }
 
 #figma {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 75vh;
   height: 75vh;
 }
